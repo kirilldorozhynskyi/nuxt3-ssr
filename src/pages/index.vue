@@ -3,7 +3,7 @@
 		<!-- Hero Section -->
 		<div class="mb-12 text-center">
 			<h2 class="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
-				Welcome to Sport Video PWA!
+				Welcome to Nuxt 3 SPA!
 			</h2>
 			<p class="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
 				This is a modern Nuxt 3 application with SSR support and server-side
@@ -146,10 +146,7 @@
 	import { useSeo } from '~/composables/useSeo'
 
 	useSeo({
-		title: 'Home - Sport Video PWA',
-		description:
-			'Welcome to Sport Video PWA - Modern Nuxt 3 application with SSR support',
-		image: '/cover.png', // если есть
-		url: 'https://your-domain.com/',
+		title: 'Home',
+		description: 'Welcome to our modern Nuxt 3 application with SSR support',
 	})
 </script>

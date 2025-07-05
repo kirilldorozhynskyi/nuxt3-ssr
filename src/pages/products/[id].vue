@@ -16,13 +16,6 @@
 	const route = useRoute()
 	const id = route.params.id
 
-	useSeo({
-		title: 'Home - Sport Video PWA',
-		description:
-			'Welcome to Sport Video PWA - Modern Nuxt 3 application with SSR support',
-		image: '/cover.png', // если есть
-		url: 'https://your-domain.com/',
-	})
 	// Fetch product data
 	const {
 		data: product,
@@ -31,6 +24,11 @@
 	} = await useAsyncData(`product-${id}`, async () => {
 		const data = await $fetch<Product>(`https://dummyjson.com/products/${id}`)
 		return data
+	})
+
+	useSeo({
+		title: product.value?.title,
+		description: product.value?.description,
 	})
 </script>
 
@@ -63,7 +61,7 @@
 		<div v-if="pending" class="flex items-center justify-center py-12">
 			<div
 				class="border-sport-600 h-12 w-12 animate-spin rounded-full border-b-2"
-			/>
+			></div>
 			<span class="ml-3 text-gray-600">Loading product details...</span>
 		</div>
 
