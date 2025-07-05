@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": ".",
+		},
+	],
+	"settings": {
+		"psi-header.changes-tracking": {
+			"isActive": false,
+		},
+		"npm.exclude": "**/@(vendor|node_modules|bower_components|dist|static|wp-content)/**",
+		"files.exclude": {
+			".output": true,
+			"node_modules": true,
+			".browserslistrc": true,
+			".eslintrc.js": true,
+			".nuxt": true,
+			"server": true,
+			".dockerignore": true,
+			".editorconfig": true,
+			".eslintignore": true,
+			".gitflow": true,
+			"COMMIT_EXAMPLES.md": false,
+			"DEVELOPMENT_GUIDELINES.md": false,
+			"Dockerfile": true,
+			"eslint.config.mjs": true,
+			"package-lock.json": true,
+		},
+	},
+}

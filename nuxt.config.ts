@@ -1,14 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
-import { appConfig } from './src/config/app'
+import { appConfig } from './config/app'
 
 export default defineNuxtConfig({
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: true },
 	modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/image', '@vite-pwa/nuxt'],
-
-	// Source directory configuration
-	srcDir: 'src',
 
 	// CSS configuration
 	css: ['~/styles/app.css'],
@@ -30,11 +27,6 @@ export default defineNuxtConfig({
 			htmlAttrs: {
 				lang: 'en',
 			},
-			link: [
-				// Disable automatic preloading of unused resources
-				{ rel: 'dns-prefetch', href: '//nuxt3-ssr-production.up.railway.app' },
-				{ rel: 'manifest', href: '/manifest.json' },
-			],
 		},
 	},
 
@@ -48,46 +40,26 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// PWA configuration
+	// PWA options
 	pwa: {
 		registerType: 'autoUpdate',
-		workbox: {
-			navigateFallback: '/',
-			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-			// Optimize caching strategy
-			runtimeCaching: [
-				{
-					urlPattern:
-						/^https:\/\/nuxt3-ssr-production\.up\.railway\.app\/_nuxt\/.*/,
-					handler: 'CacheFirst',
-					options: {
-						cacheName: 'nuxt-assets',
-						expiration: {
-							maxEntries: 50,
-							maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-						},
-					},
-				},
-			],
-		},
-		client: {
-			installPrompt: true,
-		},
-		devOptions: {
-			enabled: true,
-			suppressWarnings: true,
-			type: 'module',
-		},
 		manifest: {
 			name: appConfig.name,
-			short_name: appConfig.short_name,
-			description: appConfig.description,
-			theme_color: '#2563eb',
-			background_color: '#f9fafb',
-			display: 'standalone',
-			orientation: 'portrait',
-			scope: '/',
-			start_url: '/',
+			short_name: appConfig.name,
+			theme_color: '#ffffff',
+			screenshots: [
+				{
+					src: 'screenshot-wide.png',
+					sizes: '1280x720',
+					type: 'image/png',
+					form_factor: 'wide',
+				},
+				{
+					src: 'screenshot-mobile.png',
+					sizes: '600x800',
+					type: 'image/png',
+				},
+			],
 			icons: [
 				{
 					src: 'pwa-192x192.png',
@@ -100,12 +72,32 @@ export default defineNuxtConfig({
 					type: 'image/png',
 				},
 				{
-					src: 'pwa-512x512.png',
-					sizes: '512x512',
+					src: 'pwa-maskable-192x192.png',
+					sizes: '192x192',
 					type: 'image/png',
-					purpose: 'any maskable',
+					purpose: 'maskable',
 				},
 			],
+		},
+		workbox: {
+			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+		},
+		injectManifest: {
+			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+		},
+		client: {
+			installPrompt: true,
+			// you don't need to include this: only for testing purposes
+			// if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+			periodicSyncForUpdates: 20,
+		},
+
+		devOptions: {
+			enabled: true,
+			suppressWarnings: true,
+			navigateFallback: '/',
+			navigateFallbackAllowlist: [/^\/$/],
+			type: 'module',
 		},
 	},
 

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 	import { useSeo } from '~/composables/useSeo'
-	import type { Product } from '~/types'
 
 	// Get route parameters
 	const route = useRoute()
