@@ -32,8 +32,9 @@ export default defineNuxtConfig({
 
 	// Nitro configuration for better performance and compression
 	nitro: {
-		compressPublicAssets: true,
+		compressPublicAssets: { gzip: true, brotli: true },
 		minify: true,
+		inlineDynamicImports: true,
 		// Route rules with compression headers
 		routeRules: {
 			'/**': {

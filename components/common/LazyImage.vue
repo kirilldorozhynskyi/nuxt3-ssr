@@ -7,8 +7,6 @@
 		:fetchpriority="priority"
 		:width="width"
 		:height="height"
-		@load="onLoad"
-		@error="onError"
 	/>
 </template>
 
@@ -25,18 +23,20 @@
 	withDefaults(defineProps<Props>(), {
 		priority: 'auto',
 		className: '',
+		width: undefined,
+		height: undefined,
 	})
 
-	const emit = defineEmits<{
-		load: [event: string | Event]
-		error: [event: string | Event]
-	}>()
+	// const emit = defineEmits<{
+	// 	load: [event: string | Event]
+	// 	error: [event: string | Event]
+	// }>()
 
-	const onLoad = (event: string | Event) => {
-		emit('load', event)
-	}
+	// const onLoad = (event: string | Event) => {
+	// 	emit('load', event)
+	// }
 
-	const onError = (event: string | Event) => {
-		emit('error', event)
-	}
+	// const onError = (event: string | Event) => {
+	// 	emit('error', event)
+	// }
 </script>

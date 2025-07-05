@@ -18,7 +18,7 @@ export const appConfig = {
 		defaultTitle: baseName,
 		defaultDescription:
 			'Modern Nuxt 3 application with SSR support and Tailwind CSS v4',
-		defaultImage: '/cover.png',
+		// defaultImage: '/cover.png',
 		defaultUrl: baseUrl,
 		separator: ' | ',
 	},
