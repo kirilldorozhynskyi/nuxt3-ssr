@@ -1,6 +1,17 @@
 <script setup lang="ts">
 	import { useSeo } from '~/composables/useSeo'
 
+	// Define product type
+	interface Product {
+		id: number
+		title: string
+		description: string
+		price: number
+		thumbnail: string
+		rating: number
+		stock: number
+	}
+
 	// Get route parameters
 	const route = useRoute()
 	const id = route.params.id
@@ -18,13 +29,13 @@
 		pending,
 		error,
 	} = await useAsyncData(`product-${id}`, async () => {
-		const data = await $fetch(`https://dummyjson.com/products/${id}`)
+		const data = await $fetch<Product>(`https://dummyjson.com/products/${id}`)
 		return data
 	})
 </script>
 
 <template>
-	<div class="animate-fade-in">
+	<div>
 		<!-- Back Button -->
 		<div class="mb-6">
 			<NuxtLink
@@ -88,7 +99,7 @@
 			<div class="md:flex">
 				<!-- Product Image -->
 				<div class="md:w-1/2">
-					<img
+					<NuxtImg
 						:src="product.thumbnail"
 						:alt="product.title"
 						class="h-96 w-full object-cover md:h-full"

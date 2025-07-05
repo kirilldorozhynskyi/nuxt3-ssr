@@ -42,6 +42,18 @@ export default withNuxt([
 			'vue/prop-name-casing': ['error', 'camelCase'],
 			'vue/attribute-hyphenation': ['error', 'always'],
 			'vue/v-on-event-hyphenation': ['error', 'always'],
+			'vue/html-self-closing': [
+				'error',
+				{
+					html: {
+						void: 'always',
+						normal: 'never',
+						component: 'always',
+					},
+					svg: 'always',
+					math: 'always',
+				},
+			],
 		},
 	},
 ])

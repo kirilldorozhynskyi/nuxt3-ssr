@@ -1,5 +1,5 @@
 <template>
-	<div class="animate-fade-in">
+	<div>
 		<!-- Hero Section -->
 		<div class="mb-12 text-center">
 			<h2 class="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">

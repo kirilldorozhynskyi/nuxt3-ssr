@@ -1,6 +1,17 @@
 <script setup lang="ts">
 	import { useSeo } from '~/composables/useSeo'
 
+	// Define product type
+	interface Product {
+		id: number
+		title: string
+		description: string
+		price: number
+		thumbnail: string
+		rating: number
+		stock: number
+	}
+
 	useSeo({
 		title: 'Home - Sport Video PWA',
 		description:
@@ -14,13 +25,15 @@
 		pending,
 		error,
 	} = await useAsyncData('products', async () => {
-		const data = await $fetch('https://dummyjson.com/products?limit=10')
+		const data = await $fetch<{ products: Product[] }>(
+			'https://dummyjson.com/products?limit=10'
+		)
 		return data.products
 	})
 </script>
 
 <template>
-	<div class="animate-fade-in">
+	<div>
 		<!-- Page Header -->
 		<div class="mb-8">
 			<h2 class="mb-2 text-3xl font-bold text-gray-900">Products (SSR)</h2>
@@ -71,7 +84,7 @@
 				<div
 					class="aspect-w-16 aspect-h-9 overflow-hidden rounded-t-xl bg-gray-200"
 				>
-					<img
+					<NuxtImg
 						:src="product.thumbnail"
 						:alt="product.title"
 						class="h-48 w-full object-cover"
