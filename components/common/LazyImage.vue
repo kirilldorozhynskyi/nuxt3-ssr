@@ -1,10 +1,10 @@
 <template>
 	<NuxtImg
+		loading="lazy"
 		:src="src"
 		:alt="alt"
 		:class="className"
 		:fetchpriority="priority"
-		loading="lazy"
 		:width="width"
 		:height="height"
 		@load="onLoad"

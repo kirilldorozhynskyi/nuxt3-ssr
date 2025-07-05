@@ -30,13 +30,39 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// Nitro configuration for better performance
+	// Nitro configuration for better performance and compression
 	nitro: {
 		compressPublicAssets: true,
 		minify: true,
-		// Enable compression
+		// Route rules with compression headers
 		routeRules: {
-			'/**': { headers: { 'cache-control': 'public, max-age=31536000' } },
+			'/**': {
+				headers: {
+					'cache-control': 'public, max-age=31536000',
+					vary: 'Accept-Encoding',
+				},
+			},
+			// Specific rules for different content types
+			'/**/*.js': {
+				headers: {
+					'content-type': 'application/javascript; charset=utf-8',
+					'cache-control': 'public, max-age=31536000',
+					vary: 'Accept-Encoding',
+				},
+			},
+			'/**/*.css': {
+				headers: {
+					'content-type': 'text/css; charset=utf-8',
+					'cache-control': 'public, max-age=31536000',
+					vary: 'Accept-Encoding',
+				},
+			},
+			'/**/*.{png,jpg,jpeg,gif,svg,ico,webp}': {
+				headers: {
+					'cache-control': 'public, max-age=31536000',
+					vary: 'Accept-Encoding',
+				},
+			},
 		},
 	},
 
@@ -111,9 +137,18 @@ export default defineNuxtConfig({
 					},
 				},
 			},
+			// Enable compression for build output
+			assetsInlineLimit: 4096, // Inline assets smaller than 4KB
+			chunkSizeWarningLimit: 1000, // Warn if chunk size exceeds 1MB
 		},
 		optimizeDeps: {
 			include: ['vue', 'vue-router'],
+		},
+		// Enable compression for development server
+		server: {
+			headers: {
+				vary: 'Accept-Encoding',
+			},
 		},
 	},
 })

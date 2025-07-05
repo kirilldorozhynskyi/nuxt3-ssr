@@ -10,7 +10,7 @@
 					:src="product.thumbnail"
 					:alt="product.title"
 					class-name="h-48 w-full object-cover"
-					priority="low"
+					priority="high"
 				/>
 			</div>
 			<div class="p-6">
