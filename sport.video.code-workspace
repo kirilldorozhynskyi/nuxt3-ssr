@@ -15,7 +15,7 @@
 			".browserslistrc": true,
 			".eslintrc.js": true,
 			".nuxt": true,
-			"server": true,
+			"server": false,
 			".dockerignore": true,
 			".editorconfig": true,
 			".eslintignore": true,

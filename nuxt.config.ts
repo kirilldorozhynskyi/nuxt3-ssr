@@ -71,6 +71,7 @@ export default defineNuxtConfig({
 	pwa: {
 		registerType: 'autoUpdate',
 		manifest: {
+			id: '/',
 			name: appConfig.name,
 			short_name: appConfig.name,
 			theme_color: '#ffffff',
