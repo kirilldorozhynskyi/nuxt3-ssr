@@ -10,5 +10,20 @@
 
 		<!-- Footer -->
 		<AppFooter class="mt-auto" />
+
+		<!-- PWA Install Prompt -->
+		<PwaInstall />
+
+		<!-- Online Status -->
+		<OnlineStatus />
 	</div>
 </template>
+
+<script setup lang="ts">
+	const { initPwa } = usePwa()
+
+	// Initialize PWA functionality
+	onMounted(() => {
+		initPwa()
+	})
+</script>
