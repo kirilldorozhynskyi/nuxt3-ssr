@@ -1,31 +1,20 @@
 <script setup lang="ts">
 	import { useSeo } from '~/composables/useSeo'
-
-	// Define product type
-	interface Product {
-		id: number
-		title: string
-		description: string
-		price: number
-		thumbnail: string
-		rating: number
-		stock: number
-	}
+	import type { Product } from '~/types'
 
 	useSeo({
 		title: 'Products',
 		description: 'Browse our collection of products with server-side rendering',
 	})
 	// Fetch products data
+	const { fetchProducts } = useApi()
 	const {
 		data: products,
 		pending,
 		error,
 	} = await useAsyncData('products', async () => {
-		const data = await $fetch<{ products: Product[] }>(
-			'https://dummyjson.com/products?limit=10'
-		)
-		return data.products
+		const response = await fetchProducts(10, 0)
+		return response.products
 	})
 </script>
 

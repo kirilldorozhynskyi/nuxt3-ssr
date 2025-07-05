@@ -1,29 +1,19 @@
 <script setup lang="ts">
 	import { useSeo } from '~/composables/useSeo'
-
-	// Define product type
-	interface Product {
-		id: number
-		title: string
-		description: string
-		price: number
-		thumbnail: string
-		rating: number
-		stock: number
-	}
+	import type { Product } from '~/types'
 
 	// Get route parameters
 	const route = useRoute()
 	const id = route.params.id
 
 	// Fetch product data
+	const { fetchProduct } = useApi()
 	const {
 		data: product,
 		pending,
 		error,
 	} = await useAsyncData(`product-${id}`, async () => {
-		const data = await $fetch<Product>(`https://dummyjson.com/products/${id}`)
-		return data
+		return await fetchProduct(String(id))
 	})
 
 	useSeo({

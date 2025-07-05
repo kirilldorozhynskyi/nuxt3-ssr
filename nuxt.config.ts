@@ -33,6 +33,7 @@ export default defineNuxtConfig({
 			link: [
 				// Disable automatic preloading of unused resources
 				{ rel: 'dns-prefetch', href: '//nuxt3-ssr-production.up.railway.app' },
+				{ rel: 'manifest', href: '/manifest.json' },
 			],
 		},
 	},
