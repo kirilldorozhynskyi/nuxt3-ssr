@@ -21,11 +21,13 @@
 
 <script setup lang="ts">
 	const { initPwa } = usePwa()
+	const { initOptimization } = useResourceOptimization()
 
-	// Initialize PWA functionality only on client
+	// Initialize PWA functionality and resource optimization only on client
 	onMounted(() => {
 		if (import.meta.client) {
 			initPwa()
+			initOptimization()
 		}
 	})
 </script>

@@ -26,13 +26,17 @@
 
 ```
 sport.video-fe/
-├── pages/           # Application pages
-├── components/      # Reusable components
-├── composables/     # Shared composables
-├── utils/          # Utility functions
-├── types/          # TypeScript type definitions
-├── assets/         # Static assets
-└── public/         # Public files
+├── src/
+│   ├── pages/           # Application pages
+│   ├── components/      # Reusable components
+│   ├── composables/     # Shared composables
+│   ├── utils/          # Utility functions
+│   ├── types/          # TypeScript type definitions
+│   ├── config/         # Application configuration
+│   └── styles/         # CSS and style files
+├── public/             # Public files
+├── CHANGELOG.md        # Project changelog
+└── DEVELOPMENT_GUIDELINES.md
 ```
 
 ### Git Flow & Commit Messages
@@ -112,7 +116,7 @@ git flow release finish release-name
 1. **Feature Development**
    - Create feature branch from main
    - Write tests for new functionality
-   - Update documentation
+   - Update documentation and CHANGELOG.md
 
 2. **Code Review**
    - Self-review before submitting PR
@@ -123,6 +127,11 @@ git flow release finish release-name
    - Test in development environment
    - Verify Docker build and run
    - Check responsive design
+
+4. **Documentation**
+   - Update CHANGELOG.md with new features/fixes
+   - Follow [Keep a Changelog](https://keepachangelog.com/) format
+   - Use English for all changelog entries
 
 ## Environment Setup
 

@@ -13,12 +13,54 @@ export default defineNuxtConfig({
 	// CSS configuration
 	css: ['~/styles/app.css'],
 
+	// Performance optimization
+	experimental: {
+		payloadExtraction: false,
+	},
+
+	// Build optimization
+	build: {
+		// Disable automatic preloading in production
+		transpile: [],
+	},
+
+	// App configuration
+	app: {
+		head: {
+			link: [
+				// Disable automatic preloading of unused resources
+				{ rel: 'dns-prefetch', href: '//nuxt3-ssr-production.up.railway.app' },
+			],
+		},
+	},
+
+	// Nitro configuration for better performance
+	nitro: {
+		compressPublicAssets: true,
+		minify: true,
+	},
+
 	// PWA configuration
 	pwa: {
 		registerType: 'autoUpdate',
 		workbox: {
 			navigateFallback: '/',
 			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+			// Optimize caching strategy
+			runtimeCaching: [
+				{
+					urlPattern:
+						/^https:\/\/nuxt3-ssr-production\.up\.railway\.app\/_nuxt\/.*/,
+					handler: 'CacheFirst',
+					options: {
+						cacheName: 'nuxt-assets',
+						expiration: {
+							maxEntries: 50,
+							maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+						},
+					},
+				},
+			],
 		},
 		client: {
 			installPrompt: true,
