@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 		},
 		manifest: {
 			name: appConfig.name,
-			short_name: 'SportVideo',
+			short_name: appConfig.short_name,
 			description: appConfig.description,
 			theme_color: '#2563eb',
 			background_color: '#f9fafb',

@@ -4,6 +4,11 @@ export const usePwa = () => {
 	const isPwaSupported = ref(false)
 	const isOnline = ref(true)
 
+	// Initialize with SSR-safe values
+	if (import.meta.client) {
+		isOnline.value = navigator.onLine
+	}
+
 	// Check if PWA is installed
 	const checkPwaInstalled = () => {
 		if (import.meta.client) {

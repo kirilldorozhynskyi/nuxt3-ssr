@@ -5,6 +5,7 @@ const baseName = 'Nuxt 3 PWA'
 export const appConfig = {
 	// Application name
 	name: baseName,
+	short_name: baseName,
 
 	// Application description
 	description: 'Modern Nuxt 3 application with SSR support and Tailwind CSS v4',

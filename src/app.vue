@@ -12,18 +12,20 @@
 		<AppFooter class="mt-auto" />
 
 		<!-- PWA Install Prompt -->
-		<PwaInstall />
+		<CommonPwaInstall />
 
 		<!-- Online Status -->
-		<OnlineStatus />
+		<CommonOnlineStatus />
 	</div>
 </template>
 
 <script setup lang="ts">
 	const { initPwa } = usePwa()
 
-	// Initialize PWA functionality
+	// Initialize PWA functionality only on client
 	onMounted(() => {
-		initPwa()
+		if (import.meta.client) {
+			initPwa()
+		}
 	})
 </script>
