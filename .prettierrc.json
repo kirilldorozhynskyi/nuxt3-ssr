@@ -1,0 +1,55 @@
+{
+	"arrowParens": "avoid",
+	"bracketSpacing": true,
+	"embeddedLanguageFormatting": "auto",
+	"htmlWhitespaceSensitivity": "css",
+	"insertPragma": false,
+	"jsxBracketSameLine": false,
+	"jsxSingleQuote": true,
+	"printWidth": 80,
+	"proseWrap": "preserve",
+	"quoteProps": "as-needed",
+	"requirePragma": false,
+	"semi": false,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"trailingComma": "es5",
+	"useTabs": true,
+	"vueIndentScriptAndStyle": true,
+	"endOfLine": "lf",
+	"plugins": ["prettier-plugin-tailwindcss"],
+
+	"overrides": [
+		{
+			"files": ["*.json", "*.yml", "*.yaml"],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": true
+			}
+		},
+		{
+			"files": ["*.js", "*.ts", "*.mjs", "*.vue"],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": true,
+				"semi": false,
+				"vueIndentScriptAndStyle": true,
+				"trailingComma": "es5"
+			}
+		},
+		{
+			"files": ["*.css", "*.scss"],
+			"options": {
+				"semi": true,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["*.md"],
+			"options": {
+				"proseWrap": "always",
+				"printWidth": 100
+			}
+		}
+	]
+}

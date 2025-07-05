@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Primary color palette */
+	--color-primary-50: #eff6ff;
+	--color-primary-100: #dbeafe;
+	--color-primary-200: #bfdbfe;
+	--color-primary-300: #93c5fd;
+	--color-primary-400: #60a5fa;
+	--color-primary-500: #3b82f6;
+	--color-primary-600: #2563eb;
+	--color-primary-700: #1d4ed8;
+	--color-primary-800: #1e40af;
+	--color-primary-900: #1e3a8a;
+
+	/* Sport brand colors */
+	--color-sport-50: #f0f9ff;
+	--color-sport-100: #e0f2fe;
+	--color-sport-200: #bae6fd;
+	--color-sport-300: #7dd3fc;
+	--color-sport-400: #38bdf8;
+	--color-sport-500: #0ea5e9;
+	--color-sport-600: #0284c7;
+	--color-sport-700: #0369a1;
+	--color-sport-800: #075985;
+	--color-sport-900: #0c4a6e;
+
+	/* Typography */
+	--font-family-sans: 'Inter', system-ui, sans-serif;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(10px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.animate-fade-in {
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+	animation: slideUp 0.3s ease-out;
+}
+
+/* Custom utilities */
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.line-clamp-3 {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
