@@ -27,6 +27,9 @@ export default defineNuxtConfig({
 	// App configuration
 	app: {
 		head: {
+			htmlAttrs: {
+				lang: 'en',
+			},
 			link: [
 				// Disable automatic preloading of unused resources
 				{ rel: 'dns-prefetch', href: '//nuxt3-ssr-production.up.railway.app' },
@@ -38,6 +41,10 @@ export default defineNuxtConfig({
 	nitro: {
 		compressPublicAssets: true,
 		minify: true,
+		// Enable compression
+		routeRules: {
+			'/**': { headers: { 'cache-control': 'public, max-age=31536000' } },
+		},
 	},
 
 	// PWA configuration
@@ -103,5 +110,17 @@ export default defineNuxtConfig({
 
 	vite: {
 		plugins: [tailwindcss()],
+		build: {
+			rollupOptions: {
+				output: {
+					manualChunks: {
+						vendor: ['vue', 'vue-router'],
+					},
+				},
+			},
+		},
+		optimizeDeps: {
+			include: ['vue', 'vue-router'],
+		},
 	},
 })

@@ -6,10 +6,11 @@
 			<div
 				class="aspect-w-16 aspect-h-9 overflow-hidden rounded-t-xl bg-gray-200"
 			>
-				<NuxtImg
+				<CommonLazyImage
 					:src="product.thumbnail"
 					:alt="product.title"
-					class="h-48 w-full object-cover"
+					class-name="h-48 w-full object-cover"
+					priority="low"
 				/>
 			</div>
 			<div class="p-6">

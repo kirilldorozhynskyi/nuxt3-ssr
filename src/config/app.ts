@@ -34,4 +34,12 @@ export const appConfig = {
 	// 	email: 'info@sport-video.com',
 	// 	phone: '+1 (555) 123-4567',
 	// },
+
+	// Accessibility colors (WCAG AA compliant)
+	colors: {
+		primary: '#1d4ed8', // Darker blue for better contrast
+		secondary: '#374151', // Darker gray
+		background: '#ffffff',
+		text: '#111827', // Darker text for better contrast
+	},
 } as const

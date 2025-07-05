@@ -97,10 +97,11 @@
 			<div class="md:flex">
 				<!-- Product Image -->
 				<div class="md:w-1/2">
-					<NuxtImg
+					<CommonLazyImage
 						:src="product.thumbnail"
 						:alt="product.title"
-						class="h-96 w-full object-cover md:h-full"
+						class-name="h-96 w-full object-cover md:h-full"
+						priority="high"
 					/>
 				</div>
 
