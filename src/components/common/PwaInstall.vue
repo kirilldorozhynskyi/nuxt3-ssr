@@ -31,14 +31,14 @@
 				</div>
 				<div class="mt-4 flex space-x-2">
 					<button
-						@click="installPwa"
 						class="bg-sport-600 hover:bg-sport-700 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors duration-200"
+						@click="installPwa"
 					>
 						Install
 					</button>
 					<button
-						@click="dismissPrompt"
 						class="rounded-md px-4 py-2 text-sm font-medium text-gray-500 transition-colors duration-200 hover:text-gray-700"
+						@click="dismissPrompt"
 					>
 						Later
 					</button>
@@ -51,7 +51,7 @@
 <script setup lang="ts">
 	const { isPwaInstalled, installPwa: installPwaFn } = usePwa()
 	const showInstallPrompt = ref(false)
-	const deferredPrompt = ref<any>(null)
+	const deferredPrompt = ref<Event | null>(null)
 
 	// Listen for the beforeinstallprompt event
 	onMounted(() => {
@@ -64,9 +64,16 @@
 
 	// Install PWA
 	const installPwa = async () => {
-		const success = await installPwaFn(deferredPrompt.value)
-		if (success) {
-			showInstallPrompt.value = false
+		if (deferredPrompt.value) {
+			const success = await installPwaFn(
+				deferredPrompt.value as Event & {
+					prompt(): Promise<void>
+					userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
+				}
+			)
+			if (success) {
+				showInstallPrompt.value = false
+			}
 		}
 		deferredPrompt.value = null
 	}

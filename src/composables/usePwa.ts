@@ -1,4 +1,9 @@
 // PWA composable for managing PWA functionality
+interface BeforeInstallPromptEvent extends Event {
+	prompt(): Promise<void>
+	userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
+}
+
 export const usePwa = () => {
 	const isPwaInstalled = ref(false)
 	const isPwaSupported = ref(false)
@@ -15,7 +20,8 @@ export const usePwa = () => {
 			// Check if running in standalone mode (installed PWA)
 			isPwaInstalled.value =
 				window.matchMedia('(display-mode: standalone)').matches ||
-				(window.navigator as any).standalone === true
+				(window.navigator as Navigator & { standalone?: boolean })
+					.standalone === true
 		}
 	}
 
@@ -72,7 +78,7 @@ export const usePwa = () => {
 	}
 
 	// Install PWA
-	const installPwa = async (deferredPrompt: any) => {
+	const installPwa = async (deferredPrompt: BeforeInstallPromptEvent) => {
 		if (!deferredPrompt) return false
 
 		try {
