@@ -116,10 +116,10 @@ export default defineNuxtConfig({
 		},
 		workbox: {
 			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-			navigateFallback: '/offline',
 		},
 		injectManifest: {
 			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+			swSrc: 'sw.js',
 		},
 		client: {
 			installPrompt: true,
