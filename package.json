@@ -2,9 +2,9 @@
 	"title": "Vite front-end twig boilerplate",
 	"name": "nuxt-app",
 	"version": "0.0.1",
-  "private": true,
-  "type": "module",
-  "scripts": {
+	"private": true,
+	"type": "module",
+	"scripts": {
 		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
@@ -16,7 +16,7 @@
 		"format:check": "prettier --check .",
 		"type-check": "nuxt typecheck"
 	},
-  "dependencies": {
+	"dependencies": {
 		"@nuxt/eslint": "^1.5.2",
 		"@nuxt/icon": "^1.15.0",
 		"@nuxt/image": "^1.10.0",

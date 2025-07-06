@@ -106,9 +106,17 @@ export default defineNuxtConfig({
 					purpose: 'maskable',
 				},
 			],
+			shortcuts: [
+				{
+					name: 'Offline',
+					url: '/offline',
+					description: 'Offline page',
+				},
+			],
 		},
 		workbox: {
 			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+			navigateFallback: '/offline',
 		},
 		injectManifest: {
 			globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
@@ -123,13 +131,17 @@ export default defineNuxtConfig({
 		devOptions: {
 			enabled: true,
 			suppressWarnings: true,
-			navigateFallback: '/',
+
 			navigateFallbackAllowlist: [/^\/$/],
 			type: 'module',
 		},
 	},
 
 	vite: {
+		esbuild: {
+			drop:
+				process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+		},
 		plugins: [tailwindcss()],
 		build: {
 			rollupOptions: {
@@ -139,9 +151,6 @@ export default defineNuxtConfig({
 					},
 				},
 			},
-			// Enable compression for build output
-			assetsInlineLimit: 4096, // Inline assets smaller than 4KB
-			chunkSizeWarningLimit: 1000, // Warn if chunk size exceeds 1MB
 		},
 		optimizeDeps: {
 			include: ['vue', 'vue-router'],

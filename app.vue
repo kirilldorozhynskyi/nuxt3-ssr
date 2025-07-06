@@ -1,5 +1,7 @@
 <template>
+	<NuxtLoadingIndicator color="#fff" :height="1" />
 	<VitePwaManifest />
+
 	<div class="flex min-h-screen flex-col bg-gray-50">
 		<!-- Header -->
 		<AppHeader />
